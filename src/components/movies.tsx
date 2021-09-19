@@ -35,36 +35,20 @@ const Movies: React.FC<MoviesProps> = (props) => {
   moviesData.forEach((movie, index) => (movie.id = index));
 
   const pageSize = 5;
-  // const [filtered, setFiltered] = React.useState(movieState.filtered);
-  // const [movies, setMovies] = React.useState(paginate(moviesData, 0, pageSize));
-  // const [activeGenre, setActiveGenre] = React.useState(genreList[0]);
-  const [currentPage, setCurrentPage] = React.useState(0);
   const [sortColumn, setSortColumn] = React.useState({
     field: "title",
     order: "asc",
   });
 
   const onPageChange = (page: number) => {
-    setCurrentPage(page);
-    // const updatedMovies = paginate(movieState.filtered, page, pageSize);
-    // setMovies(updatedMovies);
+    // setCurrentPage(page);
     dispatch(actions.changePage({page, pageSize}));
-    // setMessage(`on ${page + 1} page`);
   };
 
   const onGenreChange = (genre: IGenre) => {
-    console.log("app onGC", genre);
-
-    // const newMovies =
-    //   genre.name !== genreList[0].name
-    //     ? moviesData.filter((movie) => movie.genre.name === genre.name)
-    //     : moviesData;
-    // setFiltered(newMovies);
+    // console.log("app onGC", genre);
     dispatch(actions.changeGenre(genre));
-    // const updatedMovies = paginate(newMovies, 0, pageSize);
-    // setMovies(updatedMovies);
-    // setActiveGenre(genre);
-    setCurrentPage(0);
+    // setCurrentPage(0);
   };
 
   const onSortSelect = (sortColumn: { field: string; order: string }) => {
@@ -72,16 +56,12 @@ const Movies: React.FC<MoviesProps> = (props) => {
   };
 
   const onDeleteMovie = (id: number) => {
-    // setMovies(movies.filter((movie) => movie.id !== id));
-    // setFiltered(filtered.filter((movie) => movie.id !== id));
     dispatch(actions.deleteMovie({id}));
   };
 
   const reloadData = () => {
     dispatch(loadMovies())
-    // setMovies(moviesData);
-    // setActiveGenre(genreList[0]);
-    setCurrentPage(0);
+    // setCurrentPage(0);
   };
 
 
@@ -119,7 +99,7 @@ const Movies: React.FC<MoviesProps> = (props) => {
         <Pagination
           totalItems={movieState.filtered.length}
           pageSize={pageSize}
-          currentPage={currentPage}
+          currentPage={movieState.currentPage}
           onPageChange={onPageChange}
         />
         {/* <DummyComponent message={message} /> */}
@@ -127,15 +107,5 @@ const Movies: React.FC<MoviesProps> = (props) => {
     </div>
   );
 };
-
-const mapStateToProps = (state: IState) => ({
-  movies: state.movies,
-  filtered: state.filtered,
-  selectedGenre: state.selectedGenre
-});
-
-// const mapDispatchToProps = (dispatch) => {
-//   loadMovies: () => dispatch(loadMovies())
-// }
 
 export default Movies;

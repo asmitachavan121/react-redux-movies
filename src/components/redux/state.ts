@@ -6,7 +6,8 @@ export interface IState {
     movies: IMovie[],
     filtered: IMovie[],
     selectedGenre: IGenre,
-    pageSize: number
+    pageSize: number,
+    currentPage: number
 
 }
 

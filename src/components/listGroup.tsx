@@ -11,7 +11,6 @@ interface ListGroupProps {
 }
 
 const ListGroup: FunctionComponent<ListGroupProps> = (props) => {
-  console.log(props.genres);
   return (
     <ul className="list-group">
       {props.genres.map((genre, index) => {

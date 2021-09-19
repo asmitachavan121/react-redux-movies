@@ -13,7 +13,6 @@ interface TableHeaderProps {
 
 class TableHeader extends React.Component<TableHeaderProps> {
   raiseSort = (field: string) => {
-    console.log("sortfield", field);
     const newSortColumn = { ...this.props.sortColumn };
     if (field === newSortColumn.field) {
       newSortColumn.order =
@@ -22,7 +21,6 @@ class TableHeader extends React.Component<TableHeaderProps> {
       newSortColumn.field = field;
       newSortColumn.order = "asc";
     }
-    console.log("sortOrder", newSortColumn);
     this.props.onSortSelect(newSortColumn);
   };
   render() {

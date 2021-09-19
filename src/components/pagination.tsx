@@ -12,7 +12,6 @@ const Pagination: React.FC<PaginationProps> = (props: PaginationProps) => {
     const pageCount = Math.ceil(props.totalItems / props.pageSize);
     const pages = _.range(0, pageCount);
     if(pageCount < 1) {
-        console.log(pageCount);
         return null;
     }
     console.log(props.currentPage);
